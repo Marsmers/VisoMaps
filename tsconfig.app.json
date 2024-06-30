@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "types": ["googlemaps", "markerclustererplus"],
+    "types": ["googlemaps", "markerclustererplus","@react-google-maps/api"],
+    "typeRoots": ["node_modules/@types", "src/types"],
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "useDefineForClassFields": true,

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["googlemaps", "markerclustererplus"],
+    "types": ["googlemaps", "markerclustererplus","@react-google-maps/api"],
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "skipLibCheck": true,
