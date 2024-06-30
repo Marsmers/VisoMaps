@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
-import { GoogleMap , LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+
 import {
   addMarker,
   updateMarker,
@@ -21,9 +22,7 @@ export interface MarkerData {
 
 const centerUkraine = { lat: 48.3794, lng: 31.1656 };
 
-interface MapComponentProps {}
-
-const MapComponent: React.FC<MapComponentProps> = () => {
+const MapComponent: React.FC = () => {
   const [markers, setMarkers] = useState<{ id: string; data: MarkerData }[]>(
     []
   );
@@ -45,11 +44,12 @@ const MapComponent: React.FC<MapComponentProps> = () => {
           lng: event.latLng.lng(),
           label: (markers.length + 1).toString(),
         };
-        addMarker(newMarker);
-        setMarkers((current) => [
-          ...current,
-          { id: Date.now().toString(), data: newMarker },
-        ]);
+        addMarker(newMarker).then(() => {
+          setMarkers((current) => [
+            ...current,
+            { id: Date.now().toString(), data: newMarker },
+          ]);
+        });
       }
     },
     [markers]
@@ -63,12 +63,13 @@ const MapComponent: React.FC<MapComponentProps> = () => {
           lng: event.latLng.lng(),
           label: markers.find((marker) => marker.id === id)?.data.label || "",
         };
-        updateMarker(id, updatedMarker);
-        setMarkers((current) =>
-          current.map((marker) =>
-            marker.id === id ? { ...marker, data: updatedMarker } : marker
-          )
-        );
+        updateMarker(id, updatedMarker).then(() => {
+          setMarkers((current) =>
+            current.map((marker) =>
+              marker.id === id ? { ...marker, data: updatedMarker } : marker
+            )
+          );
+        });
       }
     },
     [markers]
@@ -76,8 +77,9 @@ const MapComponent: React.FC<MapComponentProps> = () => {
 
   const handleDeleteMarker = useCallback((id: string | null) => {
     if (id) {
-      deleteMarker(id);
-      setMarkers((current) => current.filter((marker) => marker.id !== id));
+      deleteMarker(id).then(() => {
+        setMarkers((current) => current.filter((marker) => marker.id !== id));
+      });
     }
   }, []);
 
@@ -88,7 +90,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
 
   return (
     <div className="map">
-      <LoadScript googleMapsApiKey="AIzaSyDb9YTLLoqWiz8n6DIjNNgIAHellTNnVlY">
+      <LoadScript googleMapsApiKey="YOUR_API_KEY_HERE">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={centerUkraine}
