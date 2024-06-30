@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { google } from '@types/google.maps';
 
 import {
   addMarker,
@@ -90,7 +91,7 @@ const MapComponent: React.FC = () => {
 
   return (
     <div className="map">
-      <LoadScript googleMapsApiKey="YOUR_API_KEY_HERE">
+      <LoadScript googleMapsApiKey="AIzaSyDb9YTLLoqWiz8n6DIjNNgIAHellTNnVlY">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={centerUkraine}
