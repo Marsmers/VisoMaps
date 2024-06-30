@@ -1,4 +1,7 @@
+/*global google*/
+
 import React, { useCallback, useState, useEffect } from "react";
+
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 

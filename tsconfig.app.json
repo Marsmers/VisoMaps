@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "types":[
+      "google",
       "google.maps",
       "markerclustererplus"
   ] ,
