@@ -88,7 +88,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
 
   return (
     <div className="map">
-      <LoadScript googleMapsApiKey="YOUR_API_KEY">
+      <LoadScript googleMapsApiKey="AIzaSyDb9YTLLoqWiz8n6DIjNNgIAHellTNnVlY">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={centerUkraine}
